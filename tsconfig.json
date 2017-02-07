@@ -3,7 +3,8 @@
     "module": "commonjs",
     "noImplicitAny": true,
     "sourceMap": true,
-    "target": "es6"
+    "target": "es6",
+    "lib": ["es2016.array.include", "es2015", "dom"]
   },
   "files": [
     "test/*.Spec.ts",
