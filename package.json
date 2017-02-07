@@ -4,17 +4,23 @@
   "description": "A simple game single-player version of battleships",
   "main": "index.js",
   "scripts": {
-    "test": "karma start --singleRun"
+    "test": "karma start --singleRun",
+    "start": "node index.js"
   },
   "author": "Matthew Bull",
   "license": "ISC",
   "devDependencies": {
+    "@types/jasmine": "^2.5.41",
     "browserify": "^14.0.0",
     "jasmine-core": "^2.5.2",
+    "jasmine-jquery": "^2.1.1",
     "karma": "^1.4.1",
     "karma-browserify": "^5.1.1",
     "karma-jasmine": "^1.1.0",
+    "karma-jasmine-jquery": "^0.1.1",
     "tsify": "^3.0.1",
-    "typescript": "^2.1.5"
+    "typescript": "^2.1.5",
+    "watchify": "^3.9.0",
+    "yargs": "^6.6.0"
   }
 }
