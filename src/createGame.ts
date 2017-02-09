@@ -2,7 +2,6 @@ import generateShips from './generateShips';
 import takeShot from './takeShot';
 import ShotResult from './ShotResult';
 
-
 interface IGameConfig {
   root: Node;
   width: number;

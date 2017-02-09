@@ -10,10 +10,16 @@ const hasNoIntersections = (occupiedLocations: ILocation[], suggestedLocations: 
 export default class Ship {
   private size: number;
   locations: ILocation[];
+  hits: ILocation[];
+  sunk: boolean;
 
   constructor(size: number) {
     this.size = size;
     this.locations = [];
+    this.hits = [];
+    Object.defineProperty(this, 'sunk', {
+      get: () => this.locations.every(({x, y}) => this.hits.some(hit => hit.x === x && hit.y === y))
+    });
   }
 
   place (occupiedLocations: ILocation[], width: number, height: number, getRandom = getRandomInt) {
@@ -47,5 +53,13 @@ export default class Ship {
       }
       attempts++;
     }
+  }
+
+  recordHit (location: ILocation) {
+    this.hits.push(location);
+  }
+
+  alreadyHit (location: ILocation) {
+    return !hasNoIntersections([location], this.hits);
   }
 }
