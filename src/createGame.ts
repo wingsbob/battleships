@@ -1,4 +1,7 @@
 import generateShips from './generateShips';
+import takeShot from './takeShot';
+import ShotResult from './ShotResult';
+
 
 interface IGameConfig {
   root: Node;
@@ -30,7 +33,16 @@ export default ({root, width, height, shipSizes}: IGameConfig) => {
     const row: HTMLDivElement = find.call(root.childNodes, (row: HTMLDivElement) =>
       includes.call(row.childNodes, target)
     );
-    const cell: HTMLDivElement = find.call(row.childNodes, (cell: HTMLDivElement) => cell === target);
-    cell.classList.add('miss');
+    if (row) {
+      const cell: HTMLDivElement = find.call(row.childNodes, (cell: HTMLDivElement) => cell === target);
+      if (cell) {
+        const result = takeShot(
+          ships,
+          indexOf.call(row.childNodes, cell),
+          indexOf.call(root.childNodes, row)
+        );
+        cell.classList.add(ShotResult[result]);
+      }
+    }
   });
 };
