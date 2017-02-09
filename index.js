@@ -6,14 +6,12 @@ const path = require('path');
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/game.css', (req, res) => res.sendFile(path.join(__dirname, 'game.css')));
-app.get('/game.js', (req, res) => {
-  let script = '';
-
+app.get('/game.js', (req, res) =>
   browserify('src/game.ts', {
     plugin: ['tsify']
   })
   .bundle()
-  .pipe(res);
-});
+  .pipe(res)
+);
 
 app.listen(5500);
