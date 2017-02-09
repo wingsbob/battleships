@@ -1,14 +1,16 @@
+import generateShips from './generateShips';
+
 interface IGameConfig {
   root: Node;
   width: number;
   height: number;
-  ships: number[];
+  shipSizes: number[];
 }
 interface Array<T> {
   find(predicate: (search: T) => boolean) : T;
 }
 
-export default ({root, width, height, ships}: IGameConfig) => {
+export default ({root, width, height, shipSizes}: IGameConfig) => {
   for (let i = 0; i < height; i++) {
     const row = document.createElement('div');
     row.classList.add('row');
@@ -19,6 +21,8 @@ export default ({root, width, height, ships}: IGameConfig) => {
       row.appendChild(cell);
     }
   }
+
+  const ships = generateShips(shipSizes, width, height);
 
   root.addEventListener('click', ({target}) => {
     const {find, includes, indexOf} = Array.prototype;

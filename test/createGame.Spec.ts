@@ -7,7 +7,7 @@ describe('createGame', () => {
     createGame({
       width: 5,
       height: 5,
-      ships: [],
+      shipSizes: [],
       root
     });
 
@@ -24,7 +24,7 @@ describe('createGame', () => {
       createGame({
         width: 5,
         height: 5,
-        ships: [],
+        shipSizes: [],
         root
       });
       jQuery('.cell:first').click();
